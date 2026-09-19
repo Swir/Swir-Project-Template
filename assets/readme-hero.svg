@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="300" viewBox="0 0 1280 300" role="img" aria-label="SWIR Project Blueprint">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#02050A"/>
+      <stop offset="50%" stop-color="#07111C"/>
+      <stop offset="100%" stop-color="#02050A"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1690FF" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#62E5FF"/>
+      <stop offset="100%" stop-color="#1690FF" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#62E5FF" stroke-opacity="0.055"/>
+    </pattern>
+  </defs>
+  <rect width="1280" height="300" rx="20" fill="url(#bg)"/>
+  <rect width="1280" height="300" rx="20" fill="url(#grid)"/>
+  <path d="M90 70 H1190" stroke="url(#line)" stroke-width="2" filter="url(#glow)"/>
+  <path d="M90 232 H1190" stroke="url(#line)" stroke-width="1.5" opacity="0.55"/>
+  <text x="640" y="132" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="54" font-weight="800" fill="#F4FCFF">SWIR // PROJECT BLUEPRINT</text>
+  <text x="640" y="174" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="600" fill="#62E5FF" letter-spacing="3">PROFESSIONAL REPOSITORY STARTER</text>
+  <text x="640" y="210" text-anchor="middle" font-family="Consolas,monospace" font-size="16" fill="#9FB9C8">STRUCTURE  •  CI  •  DEPENDABOT  •  ROADMAP  •  RELEASES  •  QA</text>
+  <circle cx="92" cy="70" r="4" fill="#62E5FF" filter="url(#glow)"/>
+  <circle cx="1188" cy="70" r="4" fill="#62E5FF" filter="url(#glow)"/>
+</svg>
