@@ -1,56 +1,119 @@
 <div align="center">
 
-<img width="100%" src="assets/readme-hero.svg" alt="SWIR Project Blueprint" />
+<img width="100%" src="assets/readme-hero.svg" alt="SWIR Project Template — a consistent starting point for your next software project" />
 
 <br>
 
+**Build your next SWIR project on a consistent foundation.**
+
+Project structure &nbsp;·&nbsp; CI &nbsp;·&nbsp; Dependabot &nbsp;·&nbsp; Release workflow
+
 [![CI](https://github.com/Swir/Swir-Project-Template/actions/workflows/ci.yml/badge.svg)](https://github.com/Swir/Swir-Project-Template/actions/workflows/ci.yml)
-[![Template](https://img.shields.io/badge/GITHUB-TEMPLATE_ENABLED-02050A?style=flat-square&logo=github&logoColor=62E5FF)](https://github.com/Swir/Swir-Project-Template)
-[![Maintained by Swir](https://img.shields.io/badge/MAINTAINER-SWIR-02050A?style=flat-square&logo=github&logoColor=62E5FF)](https://github.com/Swir)
 
-### [**USE THIS TEMPLATE →**](https://github.com/new?template_name=Swir-Project-Template&template_owner=Swir)
+### [Use this template →](https://github.com/new?template_name=Swir-Project-Template&template_owner=Swir)
 
-**Reusable foundation for new SWIR software repositories.**
+[**Setup checklist**](TEMPLATE_SETUP.md) · [**Release guide**](docs/RELEASE_GUIDE.md)
+
+[Highlights](#highlights) · [Quick Start](#quick-start) · [Automation](#automation) · [Roadmap](#roadmap) · [Releases](#releases)
 
 </div>
 
 <img width="100%" src="assets/readme-divider.svg" alt="" />
 
-## 🚀 Release-ready foundation
+## What is SWIR Project Template?
 
-**SWIR Project Template** provides the repository structure and maintenance tooling that new projects usually need before real product work can begin.
+[SWIR Project Template](https://github.com/Swir/Swir-Project-Template) brings the structure, documentation and maintenance tooling for a new repository into one reusable starting point. Create a project, give it an identity and adapt the baseline to your technology.
 
-Instead of rebuilding CI, documentation, release housekeeping and project layout every time, start from a consistent baseline and customize only what the project actually requires.
+The repository is enabled as a **GitHub template**. Its automation provides initial repository and Python syntax checks; add the build steps and tests your product needs as it develops.
 
-```text
-IDEA  →  PROJECT  →  BUILD  →  TEST  →  RELEASE  →  EVOLVE
-          ▲
-          │
-      THIS TEMPLATE
-```
+## Highlights
 
-> After creating a repository, open **[TEMPLATE_SETUP.md](TEMPLATE_SETUP.md)** and complete the initialization checklist before the first public release.
+| Included | What it provides |
+|---|---|
+| **Project structure** | Dedicated `src/`, `tests/`, `docs/`, icon and screenshot directories. |
+| **Continuous integration** | [GitHub Actions CI](.github/workflows/ci.yml) for baseline files and Python syntax validation when sources are present. |
+| **Dependency maintenance** | [Dependabot](.github/dependabot.yml) with weekly GitHub Actions and pip updates. |
+| **Roadmap** | [Milestone planning](ROADMAP.md) with a visible project completion bar. |
+| **Changelog** | [User-facing change history](CHANGELOG.md) to keep releases understandable. |
+| **Quality checklist** | [Product and repository review](PROJECT_CHECKLIST.md) before publishing. |
+| **Release workflow** | [Manual GitHub Release creation](.github/workflows/release.yml) with a tag, title and pre-release option. |
+| **Release guide** | A [repeatable publishing process](docs/RELEASE_GUIDE.md), from build checks to verification of published assets. |
+| **README standard** | [Presentation guidance](docs/README_STYLE_GUIDE.md) for project identity, useful documentation and Search Keywords. |
+| **Community standards** | [SWIR guidance](https://github.com/Swir/.github) for issues, pull requests, contributing, security and support. |
 
----
+## Quick Start
 
-## ✨ Included by default
+### 1. Create your repository
 
-| Module | Status | Purpose |
-|---|:---:|---|
-| 🧱 **Project structure** | ✅ | `src/`, `tests/`, `docs/`, icons and screenshots |
-| ⚙️ **GitHub Actions CI** | ✅ | Repository checks and Python syntax validation when applicable |
-| 🤖 **Dependabot** | ✅ | Weekly GitHub Actions and pip dependency updates |
-| 🗺️ **Roadmap** | ✅ | Milestones and visible project progress |
-| 📝 **Changelog** | ✅ | User-facing release history |
-| ✅ **Quality checklist** | ✅ | Pre-release QA and repository review |
-| 🚀 **Release workflow** | ✅ | Manual GitHub Release creation from Actions |
-| 📚 **Release guide** | ✅ | Repeatable publishing process |
-| 🎨 **README standard** | ✅ | SWIR presentation and Search Keywords guidance |
-| 🛡️ **Community baseline** | ✅ | Shared issues, PRs, security and contribution rules |
+Select **[Use this template](https://github.com/new?template_name=Swir-Project-Template&template_owner=Swir)** and create a repository for the new project. Open **[TEMPLATE_SETUP.md](TEMPLATE_SETUP.md)** to work through the initialization checklist.
 
----
+### 2. Give it an identity
 
-## 📦 Repository structure
+Replace the template name, description and README with the real product. Add its application icon and current screenshots, set the repository description and topics, and write project-specific Search Keywords. Update repository links and the CI badge to point to the new project.
+
+### 3. Configure the foundation
+
+Review CI, dependency manifests and Dependabot for the chosen stack. For a non-Python project, remove or replace Python-specific configuration and `requirements.txt` as part of that project's setup.
+
+### 4. Build and verify
+
+Put application code in `src/` and tests in `tests/`, unless the technology has a more suitable standard layout. Add checks for the main behavior, confirm CI passes and keep the roadmap and changelog current.
+
+Before the first public release, complete the [project checklist](PROJECT_CHECKLIST.md) and follow the [release guide](docs/RELEASE_GUIDE.md).
+
+## Automation
+
+### Continuous integration
+
+The [CI workflow](.github/workflows/ci.yml) runs on pushes and pull requests. It uses Python **3.12**, compiles Python sources when present and skips compilation cleanly when there are no Python files. It also checks that `README.md`, `CHANGELOG.md` and `ROADMAP.md` exist.
+
+Extend these initial checks with the project's own build, tests and packaging validation.
+
+### Dependency maintenance
+
+[Dependabot](.github/dependabot.yml) checks **GitHub Actions** and **pip / Python dependencies** weekly. Keep its ecosystem configuration aligned with the dependencies the project actually uses.
+
+## Roadmap
+
+[ROADMAP.md](ROADMAP.md) tracks four stages: **Foundation → Usability → Quality → Release**. The included completion bar starts at **0%** for a new project's milestones.
+
+Update it as meaningful milestones are completed. Progress should represent finished project work; template availability or activity alone does not establish product readiness.
+
+## Releases
+
+The [Create Release workflow](.github/workflows/release.yml) publishes a GitHub Release from the Actions tab:
+
+1. Review [PROJECT_CHECKLIST.md](PROJECT_CHECKLIST.md) and [docs/RELEASE_GUIDE.md](docs/RELEASE_GUIDE.md).
+2. Test the build and update [CHANGELOG.md](CHANGELOG.md) and [ROADMAP.md](ROADMAP.md).
+3. Open **Actions → Create Release → Run workflow**.
+4. Provide a version tag such as `v1.0.0`, a release title and the pre-release flag when needed.
+5. Review the generated release notes, attach any project binaries or installers, then download and verify the published assets.
+
+The workflow creates the release and generates notes. Product builds, tests and asset uploads must be handled by the project's own release process.
+
+## SWIR project standard
+
+| Product | Repository | Release |
+|---|---|---|
+| Working main flow | Clear README | Tested build |
+| Useful errors | Accurate screenshots | Consistent version |
+| Own icon and identity | Search Keywords | Updated changelog |
+| Stable behavior | No committed secrets | Useful release notes |
+| Documented limitations | Passing CI | Verified release assets |
+
+### README quality
+
+A finished README should quickly explain **what the product is**, **why to use it**, **how to install and use it**, and **whether it is maintained and safe to try**.
+
+Follow the [README style guide](docs/README_STYLE_GUIDE.md) for the full SWIR presentation standard. Keep the opening clear, screenshots current and claims grounded in working behavior.
+
+### Shared governance
+
+Repositories owned by Swir can use the supported defaults from **[Swir/.github](https://github.com/Swir/.github)**: bug, feature and documentation reports; the pull request checklist; contribution guidelines; security policy; support guidance; and code of conduct.
+
+A project can override shared defaults with local files. If the new repository belongs to another account, configure its community files for that owner. See the [inheritance and override rules](https://github.com/Swir/.github#override-model).
+
+## Project structure
 
 ```text
 Swir-Project-Template/
@@ -79,141 +142,19 @@ Swir-Project-Template/
 └── requirements.txt
 ```
 
----
+## Search Keywords
 
-## ⚡ From template to project
-
-### 01 · Create
-
-Use **[Use this template](https://github.com/new?template_name=Swir-Project-Template&template_owner=Swir)** to create a clean repository from this blueprint.
-
-### 02 · Brand
-
-Replace the template identity with the real project:
-
-- project name and description,
-- application icon,
-- screenshots,
-- repository description and topics,
-- project-specific Search Keywords.
-
-### 03 · Configure
-
-Keep only the automation and dependencies the project actually uses.
-
-For a non-Python project, remove or replace Python-specific dependency and CI configuration rather than carrying unused tooling.
-
-### 04 · Build
-
-Keep application code in `src/` and tests in `tests/`, unless the chosen technology has a stronger standard layout.
-
-### 05 · Release
-
-Before publishing, review:
-
-- **[PROJECT_CHECKLIST.md](PROJECT_CHECKLIST.md)**
-- **[docs/RELEASE_GUIDE.md](docs/RELEASE_GUIDE.md)**
-- **[CHANGELOG.md](CHANGELOG.md)**
-- **[ROADMAP.md](ROADMAP.md)**
-
----
-
-## 🧪 Automation
-
-### Continuous integration
-
-The included CI workflow:
-
-- verifies the expected repository baseline,
-- sets up Python 3.12,
-- compiles Python sources when present,
-- skips Python compilation cleanly for non-Python repositories.
-
-### Dependency maintenance
-
-Dependabot performs weekly checks for:
-
-- **GitHub Actions**
-- **pip / Python dependencies**
-
-### Releases
-
-The **Create Release** workflow can create a GitHub Release directly from the Actions tab using a tag, title and optional pre-release flag.
-
-See **[docs/RELEASE_GUIDE.md](docs/RELEASE_GUIDE.md)** before publishing.
-
----
-
-## 🎯 SWIR project standard
-
-| Product | Repository | Release |
-|---|---|---|
-| Working main flow | Clear README | Tested build |
-| Useful errors | Accurate screenshots | Consistent version |
-| Own icon / identity | Search Keywords | Updated changelog |
-| Stable behavior | No secrets committed | Useful release notes |
-| Documented limitations | Passing CI | Verified release assets |
-
----
-
-## 📈 Roadmap system
-
-The included **[ROADMAP.md](ROADMAP.md)** starts with milestone-based planning and a visible completion bar.
-
-```text
-░░░░░░░░░░ 0%  →  ██████████ 100%
-```
-
-Progress should reflect completed project milestones rather than activity alone.
-
----
-
-## 🎨 README quality standard
-
-A finished README should answer quickly:
-
-```text
-WHAT IS IT?
-WHY USE IT?
-HOW DO I INSTALL IT?
-HOW DO I USE IT?
-IS IT MAINTAINED AND SAFE TO TRY?
-```
-
-See **[docs/README_STYLE_GUIDE.md](docs/README_STYLE_GUIDE.md)** for the full SWIR presentation standard.
-
----
-
-## 🛡️ Shared governance
-
-Repositories can inherit community standards from **[Swir/.github](https://github.com/Swir/.github)**:
-
-- bug reports,
-- feature requests,
-- documentation reports,
-- pull request checklist,
-- contribution guidelines,
-- security policy,
-- support guidance,
-- code of conduct.
-
-Any project can override a default with its own local file.
-
----
-
-## 🔎 Search Keywords
-
-`github project template` • `software project template` • `python project template` • `github actions template` • `dependabot template` • `release workflow` • `open source project structure` • `repository boilerplate` • `SWIR project template`
+`github project template` · `software project template` · `python project template` · `github actions template` · `dependabot template` · `release workflow` · `open source project structure` · `repository boilerplate` · `SWIR project template`
 
 <img width="100%" src="assets/readme-divider.svg" alt="" />
 
 <div align="center">
 
-### `SWIR // PROJECT BLUEPRINT`
+**SWIR · BUILD · RELEASE · EVOLVE**
 
-## START CLEAN. SHIP BETTER.
+A clear foundation. Room for your product.
 
-**Build the product — not the repository boilerplate.**
+[**Use this template →**](https://github.com/new?template_name=Swir-Project-Template&template_owner=Swir)
 
 [**← SWIR Profile**](https://github.com/Swir) · [**Shared Standards →**](https://github.com/Swir/.github)
 

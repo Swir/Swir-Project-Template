@@ -1,30 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="300" viewBox="0 0 1280 300" role="img" aria-label="SWIR Project Blueprint">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-labelledby="title desc">
+  <title id="title">SWIR Project Template</title>
+  <desc id="desc">SWIR software project template, presented in a dark electric-cyan banner with a layered code window icon.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#02050A"/>
-      <stop offset="50%" stop-color="#07111C"/>
-      <stop offset="100%" stop-color="#02050A"/>
+      <stop offset="0" stop-color="#02050A"/>
+      <stop offset="0.56" stop-color="#07111C"/>
+      <stop offset="1" stop-color="#02050A"/>
     </linearGradient>
-    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#1690FF" stop-opacity="0"/>
-      <stop offset="50%" stop-color="#62E5FF"/>
-      <stop offset="100%" stop-color="#1690FF" stop-opacity="0"/>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0088FF"/>
+      <stop offset="0.5" stop-color="#62E5FF"/>
+      <stop offset="1" stop-color="#0088FF"/>
     </linearGradient>
-    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
-      <feGaussianBlur stdDeviation="5" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
     <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M40 0H0V40" fill="none" stroke="#62E5FF" stroke-opacity="0.055"/>
+      <path d="M40 0H0V40" fill="none" stroke="#62E5FF" stroke-opacity="0.05"/>
     </pattern>
   </defs>
-  <rect width="1280" height="300" rx="20" fill="url(#bg)"/>
-  <rect width="1280" height="300" rx="20" fill="url(#grid)"/>
-  <path d="M90 70 H1190" stroke="url(#line)" stroke-width="2" filter="url(#glow)"/>
-  <path d="M90 232 H1190" stroke="url(#line)" stroke-width="1.5" opacity="0.55"/>
-  <text x="640" y="132" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="54" font-weight="800" fill="#F4FCFF">SWIR // PROJECT BLUEPRINT</text>
-  <text x="640" y="174" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="600" fill="#62E5FF" letter-spacing="3">PROFESSIONAL REPOSITORY STARTER</text>
-  <text x="640" y="210" text-anchor="middle" font-family="Consolas,monospace" font-size="16" fill="#9FB9C8">STRUCTURE  •  CI  •  DEPENDABOT  •  ROADMAP  •  RELEASES  •  QA</text>
-  <circle cx="92" cy="70" r="4" fill="#62E5FF" filter="url(#glow)"/>
-  <circle cx="1188" cy="70" r="4" fill="#62E5FF" filter="url(#glow)"/>
+  <rect width="1200" height="320" rx="26" fill="url(#bg)"/>
+  <rect width="1200" height="320" rx="26" fill="url(#grid)"/>
+  <rect x="1" y="1" width="1198" height="318" rx="25" fill="none" stroke="#62E5FF" stroke-opacity="0.28"/>
+  <path d="M0 270C180 230 300 300 490 268S780 235 960 270S1110 275 1200 248" fill="none" stroke="url(#cyan)" stroke-opacity="0.22" stroke-width="2"/>
+  <path d="M940 45H1140" stroke="#62E5FF" stroke-opacity="0.16"/>
+  <g transform="translate(68 72)">
+    <rect width="156" height="156" rx="32" fill="#07111C" stroke="#62E5FF" stroke-opacity="0.55"/>
+    <rect x="25" y="25" width="88" height="90" rx="12" fill="none" stroke="#0088FF" stroke-width="3" stroke-opacity="0.6"/>
+    <rect x="39" y="41" width="92" height="90" rx="12" fill="#07111C" stroke="#62E5FF" stroke-width="3"/>
+    <path d="M40 63H130" stroke="#62E5FF" stroke-opacity="0.35" stroke-width="2"/>
+    <circle cx="52" cy="52" r="3" fill="#62E5FF"/>
+    <circle cx="63" cy="52" r="3" fill="#0088FF"/>
+    <path d="M70 81L57 94L70 107M101 81L114 94L101 107M91 77L81 112" fill="none" stroke="#62E5FF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="270" y="69" font-size="18" font-weight="700" letter-spacing="4" fill="#62E5FF">SWIR / PROJECT BLUEPRINT</text>
+    <text x="270" y="145" font-size="54" font-weight="800" fill="#F4FAFF">PROJECT TEMPLATE</text>
+    <text x="272" y="190" font-size="24" font-weight="500" fill="#B8D2E0">A clear foundation for your next software project.</text>
+    <text x="272" y="232" font-size="16" font-weight="600" letter-spacing="1.4" fill="#62E5FF">STRUCTURE  ·  CI  ·  DEPENDABOT  ·  RELEASES</text>
+  </g>
 </svg>
