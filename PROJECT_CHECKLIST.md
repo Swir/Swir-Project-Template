@@ -45,3 +45,16 @@ Use this before a public release.
 - [ ] Source-only packages are clearly distinguished from runnable binaries
 - [ ] Rollback or recovery path is known for risky changes
 
+
+## Functional maintenance
+
+Follow [docs/REPOSITORY_REVIEW.md](docs/REPOSITORY_REVIEW.md).
+
+- [ ] Maintained source and published product versions were compared
+- [ ] Dependencies and upstream data sources were reviewed
+- [ ] Actual production feeds were checked for version, age, expiry, schema and integrity
+- [ ] Live refresh, application update and bundled-data rebuild behavior are distinguished
+- [ ] Relevant normal user flows and regressions were tested
+- [ ] Publication effects of triggered workflows were inspected
+- [ ] Each applicable review area has dated evidence or an explicit unresolved/not-checked status
+
