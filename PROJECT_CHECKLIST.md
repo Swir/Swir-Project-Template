@@ -15,6 +15,8 @@ Use this before a public release.
 - [ ] UI has no clipped or overlapping controls
 - [ ] Text remains readable at common scaling levels
 - [ ] Screenshots match the current release
+- [ ] Screenshots contain no mouse pointer, text caret, click highlight or capture-tool glow
+- [ ] Full-resolution screenshots and portfolio copies were visually reviewed
 
 ## Repository
 
@@ -38,4 +40,8 @@ Use this before a public release.
 - [ ] Version number is consistent
 - [ ] Build was tested on a clean machine or environment
 - [ ] Release assets launch correctly
+- [ ] Existing tag resolves to the exact tested source commit
+- [ ] Downloaded assets match the published SHA-256 checksums
+- [ ] Source-only packages are clearly distinguished from runnable binaries
 - [ ] Rollback or recovery path is known for risky changes
+

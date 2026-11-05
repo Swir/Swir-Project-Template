@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: "Release tag, for example v1.0.0"
+        description: "Existing tag at the selected commit, for example v1.0.0"
         required: true
         type: string
       title:
@@ -18,17 +18,50 @@ on:
         type: boolean
 
 permissions:
-  contents: write
+  contents: read
+
+concurrency:
+  group: release-${{ inputs.tag }}
+  cancel-in-progress: false
 
 jobs:
   release:
     runs-on: ubuntu-latest
-
+    timeout-minutes: 15
+    permissions:
+      contents: write
     steps:
-      - name: Checkout
+      - name: Checkout selected commit and tags
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
 
-      - name: Create GitHub Release
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run baseline checks and release packaging tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f README.md
+          test -f CHANGELOG.md
+          test -f ROADMAP.md
+          python -m compileall -q tools tests src
+          python -m unittest discover -s tests -v
+
+      - name: Prepare source package from the verified tag
+        env:
+          TAG: ${{ inputs.tag }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/prepare_release.py --tag "$TAG" --repository "$GITHUB_REPOSITORY"
+          (cd release-assets && sha256sum --check SHA256SUMS.txt)
+
+      - name: Create draft with source, provenance and checksums
         env:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ inputs.tag }}
@@ -36,8 +69,24 @@ jobs:
           PRERELEASE: ${{ inputs.prerelease }}
         shell: bash
         run: |
-          args=(release create "$TAG" --title "$TITLE" --generate-notes --target "$GITHUB_SHA")
+          set -euo pipefail
+          notes="Source package for commit ${GITHUB_SHA}. This template does not build platform binaries. Review the release checklist and attach tested product packages before publishing. SHA256SUMS.txt covers the source ZIP and BUILD_INFO.json."
+          args=(release create "$TAG" release-assets/* --draft --verify-tag --title "$TITLE" --generate-notes --notes "$notes")
           if [ "$PRERELEASE" = "true" ]; then
             args+=(--prerelease)
           fi
           gh "${args[@]}"
+
+      - name: Download and verify the uploaded draft assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          verify_dir="$(mktemp -d)"
+          gh release download "$TAG" --dir "$verify_dir"
+          cmp release-assets/SHA256SUMS.txt "$verify_dir/SHA256SUMS.txt"
+          (cd "$verify_dir" && sha256sum --check SHA256SUMS.txt)
+          printf '%s\n' 'Draft assets verified. Complete project-specific runtime testing before publishing.' >> "$GITHUB_STEP_SUMMARY"
+

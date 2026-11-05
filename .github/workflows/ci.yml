@@ -36,3 +36,7 @@ jobs:
           test -f CHANGELOG.md
           test -f ROADMAP.md
           echo "Repository checks passed."
+
+      - name: Run tests
+        run: python -m unittest discover -s tests -v
+

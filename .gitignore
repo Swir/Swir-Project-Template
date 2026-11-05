@@ -67,3 +67,6 @@ installer/output/
 output/
 exports/
 cache/
+
+# Locally prepared release artifacts
+release-assets/

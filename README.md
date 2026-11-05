@@ -36,7 +36,7 @@ The repository is enabled as a **GitHub template**. Its automation provides init
 | **Roadmap** | [Milestone planning](ROADMAP.md) with a visible project completion bar. |
 | **Changelog** | [User-facing change history](CHANGELOG.md) to keep releases understandable. |
 | **Quality checklist** | [Product and repository review](PROJECT_CHECKLIST.md) before publishing. |
-| **Release workflow** | [Manual GitHub Release creation](.github/workflows/release.yml) with a tag, title and pre-release option. |
+| **Release workflow** | [Draft source releases](.github/workflows/release.yml) with exact-tag verification, source ZIP, build manifest, SHA-256 checksums and download verification. |
 | **Release guide** | A [repeatable publishing process](docs/RELEASE_GUIDE.md), from build checks to verification of published assets. |
 | **README standard** | [Presentation guidance](docs/README_STYLE_GUIDE.md) for project identity, useful documentation and Search Keywords. |
 | **Community standards** | [SWIR guidance](https://github.com/Swir/.github) for issues, pull requests, contributing, security and support. |
@@ -65,7 +65,7 @@ Before the first public release, complete the [project checklist](PROJECT_CHECKL
 
 ### Continuous integration
 
-The [CI workflow](.github/workflows/ci.yml) runs on pushes and pull requests. It uses Python **3.12**, compiles Python sources when present and skips compilation cleanly when there are no Python files. It also checks that `README.md`, `CHANGELOG.md` and `ROADMAP.md` exist.
+The [CI workflow](.github/workflows/ci.yml) runs on pushes and pull requests. It uses Python **3.12**, compiles Python sources when present and skips compilation cleanly when there are no Python files. It also checks that `README.md`, `CHANGELOG.md` and `ROADMAP.md` exist, and runs the tests in `tests/`, including source-release packaging checks.
 
 Extend these initial checks with the project's own build, tests and packaging validation.
 
@@ -81,15 +81,15 @@ Update it as meaningful milestones are completed. Progress should represent fini
 
 ## Releases
 
-The [Create Release workflow](.github/workflows/release.yml) publishes a GitHub Release from the Actions tab:
+The [Create Release workflow](.github/workflows/release.yml) prepares a draft GitHub Release from the Actions tab:
 
 1. Review [PROJECT_CHECKLIST.md](PROJECT_CHECKLIST.md) and [docs/RELEASE_GUIDE.md](docs/RELEASE_GUIDE.md).
 2. Test the build and update [CHANGELOG.md](CHANGELOG.md) and [ROADMAP.md](ROADMAP.md).
-3. Open **Actions → Create Release → Run workflow**.
-4. Provide a version tag such as `v1.0.0`, a release title and the pre-release flag when needed.
-5. Review the generated release notes, attach any project binaries or installers, then download and verify the published assets.
+3. Push a version tag at the tested commit. Open **Actions → Create Release → Run workflow** and select that same commit's branch or tag.
+4. Provide the existing version tag such as `v1.0.0`, a release title and the pre-release flag when needed.
+5. Review the draft notes, attach tested product binaries and their checksums, and publish only after completing the release checklist.
 
-The workflow creates the release and generates notes. Product builds, tests and asset uploads must be handled by the project's own release process.
+The workflow verifies that the tag matches the selected commit, runs baseline tests, and creates a source ZIP, `BUILD_INFO.json` and `SHA256SUMS.txt`. It downloads the uploaded draft assets and verifies their checksums. Product builds and runtime qualification still belong to the project's own release process; the included archive is source-only.
 
 ## SWIR project standard
 
@@ -132,6 +132,9 @@ Swir-Project-Template/
 │   └── RELEASE_GUIDE.md
 ├── src/
 ├── tests/
+│   └── test_prepare_release.py
+├── tools/
+│   └── prepare_release.py
 ├── .editorconfig
 ├── .gitignore
 ├── CHANGELOG.md
@@ -159,3 +162,4 @@ A clear foundation. Room for your product.
 [**← SWIR Profile**](https://github.com/Swir) · [**Shared Standards →**](https://github.com/Swir/.github)
 
 </div>
+
